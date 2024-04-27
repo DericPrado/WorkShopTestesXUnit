@@ -25,4 +25,19 @@ public class AccountTests
         result.Status.Should().Be(Status.Active);
         result.Balance.Should().Be(0.00M);
     }
+
+    [Fact]
+    public void FromUpdateAccount_Should_SetPropieties()
+    {
+        //Arrange
+        var updateAcount = AutoFaker.Generate<UpdateAccount>();
+
+        //Act
+        var result = new Account().FromUpdateAccount(updateAcount);
+
+        //Assert
+        result.Should().NotBeNull();
+        result.Status.Should().Be(updateAcount.Status);
+        result.Email.Should().Be(updateAcount.Email);
+    }
 }

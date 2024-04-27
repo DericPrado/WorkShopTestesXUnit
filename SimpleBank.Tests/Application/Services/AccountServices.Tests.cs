@@ -4,6 +4,7 @@ using Moq;
 using SimpleBank.Application.Services;
 using SimpleBank.Core.Domains.Entities;
 using SimpleBank.Core.Domains.Enums;
+using SimpleBank.Core.Domains.ValueObjects;
 using SimpleBank.Core.Repositories;
 
 namespace SimpleBank.Tests.SimpleBankApplication.tests.Services;
@@ -100,7 +101,39 @@ public class AccountServicesTests
         result.Result.Count().Should().Be(10);
         _repositoryMock.Verify(x => x.GetAllAccountsAsync(), Times.Once);
     }
-}
 
-//Task<Account> CreateAccountAsync(CreateAccount createAccount);
-//Task<Account> UpdateAccountAsync(int accountNumber, UpdateAccount updateAccount);
+    [Fact]
+    [Trait("AccountServices", "CreateAccountAsync")]
+    public async void CreateAccountAsync_Should_ReturnAccoun()
+    {
+        //Arrange
+        var createAccount = AutoFaker.Generate<CreateAccount>();
+
+
+        //Act
+        var result = _service.CreateAccountAsync(createAccount);
+
+        //Assert
+        result.Should().NotBeNull();
+        result.IsCompletedSuccessfully.Should().BeTrue();
+        _repositoryMock.Verify(x => x.GetNextAccountNumberAsync(), Times.Once);
+    }
+
+    [Fact]
+    [Trait("AccountServices", "UpdateAccountAsync")]
+    public async void UpdateAccountAsync_Should_ReturnAccoun()
+    {
+        //Arrange
+        var updateAccount = AutoFaker.Generate<UpdateAccount>();
+        var account = AutoFaker.Generate<Account>();
+
+
+        //Act
+        var result = _service.UpdateAccountAsync(account.AccountNumber, updateAccount);
+
+        //Assert
+        result.Should().NotBeNull();
+        result.IsCompletedSuccessfully.Should().BeTrue();
+        _repositoryMock.Verify(x => x.GetAccountByNumberAsync(account.AccountNumber), Times.Once);
+    }
+}
