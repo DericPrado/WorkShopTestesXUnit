@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoBogus" Version="2.13.1" />
-    <PackageReference Include="Moq" Version="4.20.70" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SimpleBank.Core\SimpleBank.Core.csproj" />
     <ProjectReference Include="..\SimpleBank.Infra\SimpleBank.Infra.csproj" />
   </ItemGroup>
