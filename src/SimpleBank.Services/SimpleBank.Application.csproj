@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="6.12.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SimpleBank.Core\SimpleBank.Core.csproj" />
     <ProjectReference Include="..\SimpleBank.Infra\SimpleBank.Infra.csproj" />
   </ItemGroup>
