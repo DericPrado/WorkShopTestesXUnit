@@ -12,6 +12,7 @@ public class AccountTests
     }
 
     [Fact]
+    [Trait("AccountTests", "FromCreateAccount")]
     public void FromCreateAccount_Should_SetPropieties()
     {
         //Arrange
@@ -27,6 +28,7 @@ public class AccountTests
     }
 
     [Fact]
+    [Trait("AccountTests", "FromUpdateAccount")]
     public void FromUpdateAccount_Should_SetPropieties()
     {
         //Arrange
