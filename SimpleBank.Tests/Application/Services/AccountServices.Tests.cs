@@ -121,7 +121,7 @@ public class AccountServicesTests
 
     [Fact]
     [Trait("AccountServices", "UpdateAccountAsync")]
-    public async void UpdateAccountAsync_Should_ReturnAccoun()
+    public async void UpdateAccountAsync_Should_ReturnAccount()
     {
         //Arrange
         var updateAccount = AutoFaker.Generate<UpdateAccount>();
