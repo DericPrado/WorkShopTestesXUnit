@@ -7,5 +7,6 @@ public enum CardType
 {
     Simple = 1,
     Silver = 2,
-    Gold = 3
+    Gold = 3,
+    Platinum = 4
 }

@@ -52,6 +52,9 @@ public class Card : Base
             case CardType.Gold:
                 expiration = expiration.AddMonths(36);
                 break;
+            case CardType.Platinum:
+                expiration = expiration.AddMonths(48);
+                break;
             default:
                 expiration = expiration.AddMonths(6);
                 break;

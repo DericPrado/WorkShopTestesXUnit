@@ -42,6 +42,32 @@ public class AccountServicesTests
         _repositoryMock.Verify(x => x.UpdateAccountAsync(It.IsAny<Account>()), Times.Never);
     }
 
+    [Theory]
+    [InlineData (Status.Active)]
+    [InlineData(Status.Blocked)]
+    [InlineData(Status.Canceled)]
+    [Trait("AccountServices", "GetAccountByNumber")]
+    public async void GetAccountByNumber_Should_ReturnAccount(Status status)
+    {
+        //Arrange
+        var account = new AutoFaker<Account>()
+            .RuleFor(x => x.Status, status)
+            .RuleFor(x => x.HolderName, f => f.Name.FullName())
+            .RuleFor(x => x.Email, f => f.Internet.Email())
+            .Generate();
+
+        _repositoryMock.Setup(x => x.GetAccountByNumberAsync(It.IsAny<int>())).ReturnsAsync(account);
+
+        //Act
+        var result = _service.GetAccountByNumberAsync(account.AccountNumber).Result;
+
+        //Assert
+        result.Should().NotBeNull();
+        result.Id.Should().Be(account.Id);
+        _repositoryMock.Verify(x => x.GetAccountByNumberAsync(account.AccountNumber), Times.Once);
+    }
+
+
     [Fact]
     [Trait("AccountServices", "DeleteAccountTrue")]
     public async void DeleteAccount_Should_ReturnTrue()

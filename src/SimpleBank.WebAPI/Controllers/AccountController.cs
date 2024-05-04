@@ -22,7 +22,7 @@ public class AccountController : Controller
     public async Task<IActionResult> GetAccountById(long id)
     {
         var result = await _accountService.GetAccountByIdAsync(id);
-        return result is not null ? Ok(result) : NotFound();
+        return result is not null ? Ok(result) : NotFound(result);
     }
 
     [HttpGet("{accountNumber}")]

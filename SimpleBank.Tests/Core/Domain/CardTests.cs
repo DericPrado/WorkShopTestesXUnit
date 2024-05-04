@@ -45,17 +45,19 @@ public class CardTests
         result.Status.Should().Be(updateCard.Status);
     }
 
-    [Fact]
+    [Theory]
+    [InlineData(CardType.Simple, 18)]
+    [InlineData(CardType.Silver, 24)]
+    [InlineData(CardType.Gold, 36)]
+    [InlineData(CardType.Platinum, 48)]
     [Trait("CardTests", "GenerateExpiration")]
-    public async void GenerateExpiration_Should_DateTime()
+    public async void GenerateExpiration_Should_ReturnExpiration(CardType cardType, int months)
     {
-        //Arrange
-        var cardType = AutoFaker.Generate<CardType>();
-
-        //Act
+        //Arrange & Act
         var result = new Card().GenerateExpiration(cardType);
 
         //Assert
         result.Should().NotBeNull();
+        result.Equals(DateTime.UtcNow.AddMonths(months).ToString("MM/yyyy"));
     }
 }

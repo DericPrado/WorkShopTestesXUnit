@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleBank.Infra", "src\Sim
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9B7DB2BD-4583-4461-A48A-04543DD1F4FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleBank.Tests", "SimpleBank.Tests\SimpleBank.Tests.csproj", "{DE1B9AE6-D4AA-4398-A09A-87EF727B38FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleBank.Tests", "SimpleBank.Tests\SimpleBank.Tests.csproj", "{DE1B9AE6-D4AA-4398-A09A-87EF727B38FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
